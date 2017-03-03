@@ -167,7 +167,7 @@ counterclockwise turning of kitchen rolls
 
 * Github = company hosting git repositories
 
-* for an intro see the pdf in your materials or
+* Intro in the pdf in your materials or
 
 * <http://happygitwithr.com/>
 
