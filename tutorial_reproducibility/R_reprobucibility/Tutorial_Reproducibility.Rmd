@@ -1,0 +1,126 @@
+---
+title: "Turning the wheels of time --- A reproducibility case study"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::html_clean:
+    highlight: kate
+---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=TRUE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+
+# Installing R and RStudio
+
+* You can get R from CRAN: <https://cran.r-project.org/>
+* Then, install RStudio: <https://www.rstudio.com/>
+* You can install packages easily from within RStudio via  a call like this:
+
+```{r, eval = FALSE}
+install.packages("rmdformats")
+```
+
+* And then load them via a call like this:
+
+```{r, eval = FALSE}
+library("rmdformats")
+```
+
+
+# Our case study: Turning the wheels of time
+
+[Topolinski and Sparenberg](ttp://dx.doi.org/10.1177/1948550611419266) (2012, press
+release in German [here](https://www.uni-wuerzburg.de/sonstiges/meldungen/single/artikel/wer-mit-de/)) 
+report that 
+clockwise movements induce psychological states of temporal 
+progression and an orientation toward the future and novelty.
+
+Among other experiments, they tested whether self--reported experiential 
+openness is influenced by rotational movements.
+
+The authors use the "Openness to Experience" subscale from the
+"Neuroticism -- Extroversion -- Openness" personality inventory ([NEO](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory#Personality_dimensions))
+for their study. 
+
+They found that participants who turn kitchen rolls clockwise 
+report more openness to new experiences (Experiment 2 in their paper),
+if one controls for mood and arousal.  
+
+In 2015 [Wagenmakers et. al.](http://dx.doi.org/10.3389/fpsyg.2015.00494) 
+published a replications study that could not
+confirm these results.
+
+The full data are available at <https://osf.io/uszvx/>, and as part of the JASP 
+program with the name `Kitchen_Rolls.csv`. 
+
+# Importing the data 
+
+Here, we first load the R--package "[tidyverse](http://tidyverse.org/)". It acts
+as a wrapper for a lot of very useful R packages. As the data comes in a
+csv format, we can use the function `read_csv` from the tidyverse to import it
+and display a preview.
+
+Note that the function `read_csv` will print a message indicating the 
+column specifications it has picked up.
+
+The data can be conveniently viewed using `View()` in RStudio.
+
+```{r import_data}
+library(tidyverse)
+k_rolls <- read_csv("../data_and_papers_reproducibility/Kitchen_Rolls.csv")
+k_rolls
+```
+
+# Produce a beeswarm plot of the data 
+
+We can check graphically, whether there is a relationship between
+turning and openness by looking at the  **mean_Neo** variable. We use
+the package **ggplot2** for the plotting.
+
+```{r plot_data, dependson="import_data"}
+d_for_ana <- select(k_rolls, ParticipantNumber, Rotation, mean_NEO) 
+
+library(ggbeeswarm) 
+library(Hmisc)
+
+
+ggplot(d_for_ana, aes(x = Rotation, y = mean_NEO, color = Rotation)) +
+      geom_beeswarm() +
+      scale_color_hue(h.start = 30, l = 50) + 
+      stat_summary(fun.data = mean_cl_normal, geom  = "crossbar")
+
+
+```
+
+The authors of the replication study found that the mean NEO score was significantly 
+lower (albeit with a small effect size) in the clock--wise compared to the 
+counter--clockwise group. 
+
+Looking at the plot, we can actually observe that this, The boxes show the 
+mean of the data and its 95% confidence interval. We can next try
+to confirm the visual impression via a t-test.
+
+# Perform a t-test to compare the two groups
+
+We can now run a t-test to check whether our visual impression is correct, 
+i.e. that there isn't actually a difference between the two experimental groups.
+
+```{r perform_test, dependson="plot_data"}
+t.test(mean_NEO ~ Rotation, data = d_for_ana)
+```
+
+
+

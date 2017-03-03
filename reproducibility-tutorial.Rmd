@@ -1,0 +1,141 @@
+---
+title: "Tools for reproducible research"  
+output: 
+  revealjs::revealjs_presentation:
+    transition: "none"
+    theme: "solarized"
+    highlight: "kate"
+    self_contained: false
+    reveal_plugins: ["notes", "zoom"]
+    reveal_options:
+      showNotes: true
+      width: 960
+      height: 700
+      margin: 0.1
+      minScale: 1
+      maxScale: 2
+---
+
+# Why?
+
+
+## 5 selfish reasons from [F. Markowetz](http://www.markowetzlab.org/florian/) <sup><a href="#fn1" id="ref1">1</a></sup>
+
+1. ... helps to avoid disaster
+
+1. ... makes it easier to write papers
+
+1. ... helps reviewers see it your way  
+
+1. ... enables continuity of your work
+
+1. ... helps to build your reputation
+
+<aside class="notes">
+
+  <ul>
+  <li> no dark tone here  </li>
+  <li> you will profit in the end!</li>
+  <li> </li>
+  </ul> 
+
+
+</aside>
+
+
+<hr></hr>
+
+<sup id="fn1">1. [Markowetz -- Five selfish reasons to work reproducibly -- 2015, Genome Biology](https://dx.doi.org/10.1186/s13059-015-0850-7) <a href="#ref1" title="Jump back to footnote 1 in the text."></a></sup>
+
+
+# The tools: RMarkdown
+
+
+## Markdown
+
+* Markdown is a simple formatting syntax for authoring HTML, PDF, and 
+MS Word documents: <http://rmarkdown.rstudio.com>
+
+## Text formatting 
+```
+*italic*  or _italic_
+**bold**   __bold__
+```
+
+### Headings
+
+```
+# 1st Level Header
+
+## 2nd Level Header
+```
+
+### Lists
+
+```
+*   Bulleted list item 1
+
+*   Item 2
+
+1.  Numbered list item 1
+
+1.  Item 2. The numbers are incremented automatically in the output.
+```
+
+
+## Links and images
+
+```
+<http://example.com>
+
+[linked phrase](http://example.com)
+
+![optional caption text](path/to/img.png)
+```
+
+### Tables 
+
+```
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+```
+## R Markdown
+
+* __R Markdown is a mix of R code and markdown comments__
+
+* In R Studio, R markdown can be run in a __notebook mode__ or classic __document mode__
+
+* ... better than simple text based "scripts"
+
+# Case study: Turning the wheels of time
+
+## Turning the wheels of time
+
+* [Topolinski and Sparenberg](ttp://dx.doi.org/10.1177/1948550611419266) :
+ self--reported experiential 
+openness is influenced by rotational movements 
+
+* In 2015 [Wagenmakers et. al.](http://dx.doi.org/10.3389/fpsyg.2015.00494)  
+could not confirm the results
+
+## 
+
+* The Wagenmakers et. al. data is availalbe at <https://osf.io/uszvx/>, and as part of the JASP 
+program with the name `Kitchen_Rolls.csv`. 
+
+* The authors use the "Openness to Experience" subscale from the
+([NEO](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory#Personality_dimensions)) inventory 
+
+* They compare the mean response score between two groups with clockwise and
+counterclockwise turning of kitchen rolls
+
+##
+
+<img src="kichen_rolls.jpg" width="50%" height="50%" alt="kitchen rolls experiment"/>
+
+## ... hands on Rmarkdown ...
+
+# Jupyter Notebooks

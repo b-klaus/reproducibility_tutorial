@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Tools for reproducible research</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reproducibility-tutorial_files/reveal.js-3.3.0/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="reproducibility-tutorial_files/reveal.js-3.3.0/css/theme/solarized.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reproducibility-tutorial_files/reveal.js-3.3.0/css/print/pdf.css' : 'reproducibility-tutorial_files/reveal.js-3.3.0/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <!--[if lt IE 9]>
+    <script src="reproducibility-tutorial_files/reveal.js-3.3.0/lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Tools for reproducible research</h1>
+</section>
+
+<section><section id="why" class="titleslide slide level1"><h1>Why?</h1></section><section id="selfish-reasons-from-f.-markowetz-1" class="slide level2">
+<h1>5 selfish reasons from <a href="http://www.markowetzlab.org/florian/">F. Markowetz</a> <sup><a href="#fn1" id="ref1">1</a></sup></h1>
+<ol type="1">
+<li><p>… helps to avoid disaster</p></li>
+<li><p>… makes it easier to write papers</p></li>
+<li><p>… helps reviewers see it your way</p></li>
+<li><p>… enables continuity of your work</p></li>
+<li><p>… helps to build your reputation</p></li>
+</ol>
+<aside class="notes">
+<ul>
+<li>
+no dark tone here
+</li>
+<li>
+you will profit in the end!
+</li>
+<li>
+</li>
+</ul>
+</aside>
+<hr>
+</hr>
+<p><sup id="fn1">1. <a href="https://dx.doi.org/10.1186/s13059-015-0850-7">Markowetz – Five selfish reasons to work reproducibly – 2015, Genome Biology</a> <a href="#ref1" title="Jump back to footnote 1 in the text."></a></sup></p>
+</section></section>
+<section><section id="the-tools" class="titleslide slide level1"><h1>The tools</h1></section><section id="markdown-rmarkdown-and-jupyter-notebooks" class="slide level2">
+<h1>Markdown, RMarkdown and jupyter notebooks</h1>
+<ul>
+<li>Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents: <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a></li>
+</ul>
+</section><section id="text-formatting" class="slide level2">
+<h1>Text formatting</h1>
+<pre><code>*italic*  or _italic_
+**bold**   __bold__</code></pre>
+<h3 id="headings">Headings</h3>
+<pre><code># 1st Level Header
+
+## 2nd Level Header</code></pre>
+<h3 id="lists">Lists</h3>
+<pre><code>*   Bulleted list item 1
+
+*   Item 2
+
+1.  Numbered list item 1
+
+1.  Item 2. The numbers are incremented automatically in the output.</code></pre>
+</section><section id="links-and-images" class="slide level2">
+<h1>Links and images</h1>
+<pre><code>&lt;http://example.com&gt;
+
+[linked phrase](http://example.com)
+
+![optional caption text](path/to/img.png)</code></pre>
+<h3 id="tables">Tables</h3>
+<pre><code>First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+</code></pre>
+</section><section id="r-markdown" class="slide level2">
+<h1>R Markdown</h1>
+<ul>
+<li><p><strong>R Markdown is a mix of R code and markdown comments</strong></p></li>
+<li><p>In R Studio, R markdown can be run in a <strong>notebook mode</strong></p></li>
+<li><p>… better than simple text based “scripts”</p></li>
+</ul>
+</section></section>
+<section><section id="case-study-turning-the-wheels-of-time" class="titleslide slide level1"><h1>Case study: Turning the wheels of time</h1></section><section id="turning-the-wheels-of-time" class="slide level2">
+<h1>Turning the wheels of time</h1>
+<ul>
+<li><p><a href="ttp://dx.doi.org/10.1177/1948550611419266">Topolinski and Sparenberg</a> : self–reported experiential openness is influenced by rotational movements</p></li>
+<li><p>In 2015 <a href="http://dx.doi.org/10.3389/fpsyg.2015.00494">Wagenmakers et. al.</a><br />
+could not confirm the results</p></li>
+</ul>
+</section><section id="section" class="slide level2">
+<h1></h1>
+<ul>
+<li><p>The Wagenmakers et. al. data is availalbe at <a href="https://osf.io/uszvx/" class="uri">https://osf.io/uszvx/</a>, and as part of the JASP program with the name <code>Kitchen_Rolls.csv</code>.</p></li>
+<li><p>The authors use the “Openness to Experience” subscale from the (<a href="https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory#Personality_dimensions">NEO</a>) inventory</p></li>
+<li><p>They compare the mean response score between two groups with clockwise and counterclockwise turning of kitchen rolls</p></li>
+</ul>
+</section><section id="section-1" class="slide level2">
+<h1></h1>
+<p><img src="kichen_rolls.jpg" width="50%" height="50%" alt="kitchen rolls experiment"/></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="reproducibility-tutorial_files/reveal.js-3.3.0/lib/js/head.min.js"></script>
+  <script src="reproducibility-tutorial_files/reveal.js-3.3.0/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 960,
+        height: 700,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 1,
+        maxScale: 2,
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reproducibility-tutorial_files/reveal.js-3.3.0/plugin/notes/notes.js', async: true },
+          { src: 'reproducibility-tutorial_files/reveal.js-3.3.0/plugin/zoom-js/zoom.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
