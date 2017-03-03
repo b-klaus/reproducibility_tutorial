@@ -139,3 +139,10 @@ counterclockwise turning of kitchen rolls
 ## ... hands on Rmarkdown ...
 
 # Jupyter Notebooks
+
+## Jupyter Notebooks
+
+* Composed of "cells" where you enter either markdown or Python code
+
+* Other languages are supported as well
+
