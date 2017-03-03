@@ -114,7 +114,7 @@ Content Cell  | Content Cell
 
 ## Turning the wheels of time
 
-* [Topolinski and Sparenberg](ttp://dx.doi.org/10.1177/1948550611419266) :
+* [Topolinski and Sparenberg](http://dx.doi.org/10.1177/1948550611419266) :
  self--reported experiential 
 openness is influenced by rotational movements 
 

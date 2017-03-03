@@ -3,7 +3,7 @@ publically available data.
 
 # Background
 
-[Topolinski and Sparenberg](ttp://dx.doi.org/10.1177/1948550611419266) (2012, press
+[Topolinski and Sparenberg](http://dx.doi.org/10.1177/1948550611419266) (2012, press
 release in German [here](https://www.uni-wuerzburg.de/sonstiges/meldungen/single/artikel/wer-mit-de/)) 
 report that 
 clockwise movements induce psychological states of temporal 
