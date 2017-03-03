@@ -1,5 +1,5 @@
-This reposity is hosting materials for a reproducibility tutorial in which we re-analyse
-publically available data.
+This repository is hosting materials for a reproducibility tutorial in which we re-analyse
+publicly available data.
 
 # Background
 
