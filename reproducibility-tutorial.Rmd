@@ -123,7 +123,7 @@ could not confirm the results
 
 ## 
 
-* The Wagenmakers et. al. data is availalbe at <https://osf.io/uszvx/>, and as part of the JASP 
+* The Wagenmakers et. al. data is available at <https://osf.io/uszvx/>, and as part of the JASP 
 program with the name `Kitchen_Rolls.csv`. 
 
 * The authors use the "Openness to Experience" subscale from the
@@ -134,15 +134,50 @@ counterclockwise turning of kitchen rolls
 
 ##
 
-<img src="kichen_rolls.jpg" width="50%" height="50%" alt="kitchen rolls experiment"/>
+<img src="kitchen_rolls.jpg" width="50%" height="50%" alt="kitchen rolls experiment"/>
 
 ## ... hands on Rmarkdown ...
 
 # Jupyter Notebooks
 
-## Jupyter Notebooks
+## Jupyter Notebooks 
+
+* formely known as IPython Notebooks
 
 * Composed of "cells" where you enter either markdown or Python code
 
 * Other languages are supported as well
 
+## ... hands on in Jupyter ...
+
+
+# Version control
+
+## Why version control?
+
+<img src="version_control.png" width="50%" height="50%" alt="version control"/>
+
+ from <http://phdcomics.com/comics/archive_print.php?comicid=1531>
+ 
+ 
+ 
+## Git and github
+
+* Git = the modern version control tool
+
+* Github = company hosting git repositories
+
+* for an intro see the pdf in your materials or
+
+* <http://happygitwithr.com/>
+
+
+# Markdown / html based slides
+
+##  Reproducible slides
+
+* I recommend [reveal.js](lab.hakim.se/reveal-js/)
+
+* see <http://rmarkdown.rstudio.com/revealjs_presentation_format.html>
+
+* OR <https://slides.com>/
