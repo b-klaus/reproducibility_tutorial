@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="date" content="2017-02-28" />
+<meta name="date" content="2017-03-07" />
 
 <title>Turning the wheels of time — A reproducibility case study</title>
 
@@ -108,7 +108,7 @@ img {
 
 <div id="header">
 <h1 class="title">Turning the wheels of time — A reproducibility case study</h1>
-<h4 class="date"><em>2017-02-28</em></h4>
+<h4 class="date"><em>2017-03-07</em></h4>
 </div>
 
 <div id="content">
@@ -120,15 +120,19 @@ img {
 <li>You can install packages easily from within RStudio via a call like this:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;rmdformats&quot;</span>)</code></pre></div>
+<ul>
+<li>And then load them via a call like this:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;rmdformats&quot;</span>)</code></pre></div>
 </div>
 <div id="our-case-study-turning-the-wheels-of-time" class="section level1">
 <h1>Our case study: Turning the wheels of time</h1>
 <p><a href="ttp://dx.doi.org/10.1177/1948550611419266">Topolinski and Sparenberg</a> (2012, press release in German <a href="https://www.uni-wuerzburg.de/sonstiges/meldungen/single/artikel/wer-mit-de/">here</a>) report that clockwise movements induce psychological states of temporal progression and an orientation toward the future and novelty.</p>
 <p>Among other experiments, they tested whether self–reported experiential openness is influenced by rotational movements.</p>
 <p>The authors use the “Openness to Experience” subscale from the “Neuroticism – Extroversion – Openness” personality inventory (<a href="https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory#Personality_dimensions">NEO</a>) for their study.</p>
-<p>They found that participants who turn kitchen rolls clockwise report more openness to new experiences (Experiment 2 in their paper), if one controlls for mood and arousal.</p>
+<p>They found that participants who turn kitchen rolls clockwise report more openness to new experiences (Experiment 2 in their paper), if one controls for mood and arousal.</p>
 <p>In 2015 <a href="http://dx.doi.org/10.3389/fpsyg.2015.00494">Wagenmakers et. al.</a> published a replications study that could not confirm these results.</p>
-<p>The full data are availalbe at <a href="https://osf.io/uszvx/" class="uri">https://osf.io/uszvx/</a>, and as part of the JASP program with the name <code>Kitchen_Rolls.csv</code>.</p>
+<p>The full data are available at <a href="https://osf.io/uszvx/" class="uri">https://osf.io/uszvx/</a>, and as part of the JASP program with the name <code>Kitchen_Rolls.csv</code>.</p>
 </div>
 <div id="importing-the-data" class="section level1">
 <h1>Importing the data</h1>
@@ -136,8 +140,19 @@ img {
 <p>Note that the function <code>read_csv</code> will print a message indicating the column specifications it has picked up.</p>
 <p>The data can be conveniently viewed using <code>View()</code> in RStudio.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
-k_rolls &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;../data_and_papers_reproducibility/Kitchen_Rolls.csv&quot;</span>)
-k_rolls</code></pre></div>
+k_rolls &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;../data_and_papers_reproducibility/Kitchen_Rolls.csv&quot;</span>)</code></pre></div>
+<pre><code>Parsed with column specification:
+cols(
+  .default = col_integer(),
+  mean_NEO = col_double(),
+  Include = col_logical(),
+  Rotation = col_character(),
+  Sex = col_character(),
+  Student = col_character(),
+  Major.Occupation = col_character()
+)</code></pre>
+<pre><code>See spec(...) for full column specifications.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k_rolls</code></pre></div>
 <pre><code># A tibble: 102 × 25
    ParticipantNumber Condition q1_check q2_check q1_NEO q2_NEO q3_NEO
                &lt;int&gt;     &lt;int&gt;    &lt;int&gt;    &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;
@@ -159,7 +174,7 @@ k_rolls</code></pre></div>
 </div>
 <div id="produce-a-beeswarm-plot-of-the-data" class="section level1">
 <h1>Produce a beeswarm plot of the data</h1>
-<p>We can check graphically, whether there is a relationship between turning and openess by looking at the <strong>mean_Neo</strong> variable. We use the package <strong>ggplot2</strong> for the plotting.</p>
+<p>We can check graphically, whether there is a relationship between turning and openness by looking at the <strong>mean_Neo</strong> variable. We use the package <strong>ggplot2</strong> for the plotting.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d_for_ana &lt;-<span class="st"> </span><span class="kw">select</span>(k_rolls, ParticipantNumber, Rotation, mean_NEO)
 
 <span class="kw">library</span>(ggbeeswarm)
@@ -175,6 +190,19 @@ k_rolls</code></pre></div>
 </div>
 <div id="perform-a-t-test-to-compare-the-two-groups" class="section level1">
 <h1>Perform a t-test to compare the two groups</h1>
+<p>We can now run a t-test to check whether our visual impression is correct, i.e. that there isn’t actually a difference between the two experimental groups.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(mean_NEO ~<span class="st"> </span>Rotation, <span class="dt">data =</span> d_for_ana)</code></pre></div>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  mean_NEO by Rotation
+t = -0.75149, df = 97.315, p-value = 0.4542
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.2633780  0.1187021
+sample estimates:
+  mean in group clock mean in group counter 
+             0.640625              0.712963 </code></pre>
 </div>
 </div>
 
