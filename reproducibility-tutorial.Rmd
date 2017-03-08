@@ -121,6 +121,12 @@ openness is influenced by rotational movements
 * In 2015 [Wagenmakers et. al.](http://dx.doi.org/10.3389/fpsyg.2015.00494)  
 could not confirm the results
 
+
+##
+
+<img src="kitchen_rolls.jpg" width="50%" height="50%" alt="kitchen rolls experiment"/>
+
+
 ## 
 
 * The Wagenmakers et. al. data is available at <https://osf.io/uszvx/>, and as part of the JASP 
@@ -132,9 +138,6 @@ program with the name `Kitchen_Rolls.csv`.
 * They compare the mean response score between two groups with clockwise and
 counterclockwise turning of kitchen rolls
 
-##
-
-<img src="kitchen_rolls.jpg" width="50%" height="50%" alt="kitchen rolls experiment"/>
 
 ## ... hands on Rmarkdown ...
 
